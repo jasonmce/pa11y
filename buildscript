@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker build . -t jasonmce/pa11y
+
+# Recommend a quick test to make sure everything is working.
+read -p "Quick test on nature.com? (Y/n) "
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Nn]$ ]]
+then
+    exit 1
+fi
+docker run --rm -t jasonmce/pa11y nature.com
